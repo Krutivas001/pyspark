@@ -1,0 +1,6 @@
+I have started validating special characters logic efficiently
+$Hello guys %% Its intresting to check^^ lot valid and invalid chars from the list of special chars
+like %()_#@!~`^&*{}[];:'",.<>?/|\+=- and many more
+Lets see how well it works for all the special characters mentioned here
+Also checking for escape sequences like \n, \t, \r, \b, \f, \', \", \\
+End of the special characters validation sample text.
