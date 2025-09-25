@@ -42,5 +42,26 @@ df9.show()
 print("Number of Stages Final: ",spark.sparkContext.statusTracker().getActiveStageIds())
 print("Number of Jobs Final: ",spark.sparkContext.statusTracker().getActiveJobsIds())
 
+data = [
+    ("Alice", 25, "HR", 3000),
+    ("Bob", 30, "IT", 4000),
+    ("Charlie", 28, "Finance", 3500),
+    ("David", 35, "IT", 4000),
+    ("Eve", 22, "HR", 3000),
+]
+
+columns = ["name", "age", "department", "salary"]
+dfpivot = spark.createDataFrame(data, columns)
+#dfpivot.show()
+dfpivot.groupBy("department").pivot("age").sum("salary").show()
+
 #Note -> Union Doesnt create any shuffle operation so no stages and jobs are created
+
+#Get last line of a file
+linesVal = spark.sparkContext.textFile("sample.txt")
+last_line = linesVal.zipWithIndex().map(lambda x : (x[1], x[0])).sortByKey(ascending=False).first()[1]
+print("Last line of the file:", last_line)
+
+#Various Transformations of Dataframe
+
 spark.stop()
